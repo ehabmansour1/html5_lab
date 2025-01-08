@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Location</title>
+  </head>
+  <body>
+    <button id="getLocationBtn">Get My Location</button>
+    <script>
+      document
+        .getElementById("getLocationBtn")
+        .addEventListener("click", () => {
+          navigator.geolocation.getCurrentPosition((position) => {
+            window.open(
+              `https://www.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`,
+              "_blank"
+            );
+          });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+#dropDiv {
+  width: 100px;
+  height: 100px;
+  border: 2px dashed #333;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#draggableImage {
+  width: 50px;
+  cursor: grab;
+}

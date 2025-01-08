@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Face Interaction</title>
+  </head>
+  <body>
+    <canvas
+      id="faceCanvas"
+      width="300"
+      height="300"
+      style="border: 1px solid black"
+    ></canvas>
+    <script>
+      let canvas = document.getElementById("faceCanvas");
+      let ctx = canvas.getContext("2d");
+      let sadFace = new Image();
+      let smileyFace = new Image();
+      sadFace.src = "sad.png";
+      smileyFace.src = "smiley.png";
+
+      let currentImage = sadFace;
+      let scaledWidth = 150;
+      let originalWidth = 150;
+      let originalHeight = 150;
+      function drawFace() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let x = (canvas.width - scaledWidth) / 2;
+        let y = (canvas.height - originalHeight) / 2;
+        ctx.drawImage(currentImage, x, y, scaledWidth, originalHeight);
+      }
+      sadFace.onload = function () {
+        drawFace();
+      };
+      canvas.addEventListener("mousedown", () => {
+        currentImage = smileyFace;
+        scaledWidth = 200;
+        drawFace();
+      });
+      canvas.addEventListener("mouseup", () => {
+        currentImage = sadFace;
+        scaledWidth = originalWidth;
+        drawFace();
+      });
+    </script>
+  </body>
+</html>
